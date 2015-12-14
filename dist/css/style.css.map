@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../../app/scss/style.scss",
+		"../../app/scss/_sprites.scss",
+		"../../app/scss/_custom.scss"
+	],
+	"mappings": "AAAA,OAAO,CAAC,2DAAI;ACAZ;;;;;;;;;;;;EAYE;AAOF;;;;;;;;;;EAUE;AA2BF;;;;;EAKE;AC3DF,mBAAmB;AAEnB,IAAI,CAAC;EACH,WAAW,EAAE,oBAAqB;EAClC,gBAAgB,EAAE,MAAO,GAC1B",
+	"names": []
+}

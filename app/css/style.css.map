@@ -1,0 +1,11 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../scss/style.scss",
+		"../scss/_sprites.scss",
+		"../scss/_custom.scss"
+	],
+	"mappings": "AAAA,OAAO,CAAC,iFAAI;ACAZ;;;;;;;;;;;;EAYE;AAOF;;;;;;;;;;EAUE;AA2BF;;;;;EAKE;AC3DF,mBAAmB;AAEnB,IAAI,CAAC;EACH,WAAW,EAAE,uBAAwB;EACrC,UAAU,EAAE,GAAI,GACjB",
+	"names": []
+}

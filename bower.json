@@ -1,0 +1,19 @@
+{
+  "name": "html-starter",
+  "version": "0.0.0",
+  "homepage": "https://github.com/unleashit/html-starter",
+  "authors": [
+    "unleashit <git@jasongallagher.org>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.0.3"
+  }
+}

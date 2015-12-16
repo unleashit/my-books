@@ -4667,12 +4667,20 @@ var app = (function(utilFncs) {
             var html = template(data);
             //console.log(html);
 
-            var d = document.createElement('div');
-            d.setAttribute('class', source.getAttribute('id') + '-compiled');
-            d.innerHTML = html;
+            var newID = source.getAttribute('id') + '-compiled';
+            var d = document.querySelector('.' + newID) || document.createElement('div');
+console.log(d);
+            if (d.innerHTML === '') {
+                d.setAttribute('class', newID);
+                d.innerHTML = html;
 
-            // insert after handlebars script tag
-            this.insertAfter(d, source);
+                // insert after handlebars script tag
+                this.insertAfter(d, source);
+                } else {
+
+                // if compiled template exists, replace it
+                d.innerHTML = html;
+            }
         },
 
         // responsive breakpoints for js

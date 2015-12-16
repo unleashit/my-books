@@ -40,9 +40,9 @@
     <div class="navigation">
         <div class="container">
             <ul class="mainnav">
-                <li><a href="#">El Pooch</a></li>
-                <li><a href="#">The Flight</a></li>
-                <li><a href="#">Top 10 Austrailian Beaches</a></li>
+                <li><a href="#el-pooch">El Pooch</a></li>
+                <li><a href="#the-flight">The Flight</a></li>
+                <li><a href="#top-10">Top 10 Austrailian Beaches</a></li>
             </ul>
         </div>
     </div>
@@ -66,7 +66,7 @@
         <script id="books" type="text/x-handlebars-template">
             <ul class="books">
                 {{#each this}}
-                <li class="card">
+                <li class="card" id="{{this.id}}">
                     <div class="book-image">
                         <a href="#"><img src="{{this.image}}" alt="{{this.title}}"/></a>
                     </div>
@@ -88,7 +88,7 @@
     <div class="col2">
 
     <script id="top10" type="text/x-handlebars-template">
-        <ul class="top10 card">
+        <ul class="top10 card" id="top-10">
             <div class="top10-main-image">
                 <img src="images/top-10-aussie-beaches.jpg" alt=""/>
             </div>
@@ -117,16 +117,16 @@
         <h3>Add Your Review</h3>
         <div class="errors"></div>
         <p>
-            <label for="booktitle">What is the title?</label>
+            <label for="booktitle">Name of the book?</label>
             <input type="text" name="booktitle" id="booktitle">
         </p>
         <p>
-            <label for="bookauthor">Who is the author?</label>
+            <label for="bookauthor">The author?</label>
             <input type="text" name="bookauthor" id="bookauthor">
         </p>
         <p>
             <label for="bookimage">Enter a path to the book's image</label>
-            <input type="text" name="bookimage" id="bookimage">
+            <input type="text" name="bookimage" id="bookimage" value="images/no-image.png">
         </p>
         <div><button type="submit" id="add-review-btn">Add review</button></div>
     </form>

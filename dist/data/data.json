@@ -1,11 +1,13 @@
 {
   "book": [
     {
+      "id": "el-pooch",
       "title": "El Pooch",
       "author": "Alex Nelson",
       "image": "images/el-pooch.jpg"
     },
     {
+      "id": "the-flight",
       "title": "The Flight",
       "author": "Scott Masterson",
       "image": "images/the-flight.jpg"

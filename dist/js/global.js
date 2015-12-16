@@ -4682,16 +4682,16 @@ var app = (function(utilFncs) {
             lg: 992
         },
 
-        // ajax request
-        // args: callback function
-        http: function(callback, obj) {
+        // ajax request gets data from file and sends it to hamdlebars templates
+        getJson: function(url) {
             var xhr = new XMLHttpRequest();
-            xhr.open('get', encodeURI('data/data.json'));
+            xhr.open('get', encodeURI(url));
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    // alert(xhr.responseText);
                     var data = JSON.parse(xhr.responseText);
-                    callback(data[obj]);
+                    window.bookReviews = data;
+                    books.getBooks(data.book);
+                    books.getTop10(data.top10);
                 }
                 else {
                     alert('Request failed.  Returned status of ' + xhr.status);
@@ -4777,14 +4777,14 @@ var books = (function(utilFncs) {
                 books.addBook.errors.innerHTML = o;
             },
             submitForm: function(fields) {
-                books.addBook.errors.innerHTML = '';
-                // utilFncs.httpPut('books', fields);
+                bookReviews.book.unshift(fields);
+                books.getBooks(bookReviews.book);
                 books.closeBook();
             }
         },
 
         // closes any card with .close class on button but relies on the current dom
-        // solution: jquery parent() or create a similar method
+        // solution: jquery parent('.close') or create a similar method
         closeCard: function(e){
             e.preventDefault();
             var close = e.currentTarget;
@@ -4794,6 +4794,7 @@ var books = (function(utilFncs) {
 
         // closes add review form
         closeBook: function() {
+            books.addBook.errors.innerHTML = '';
             books.addBook.elem.querySelector('form').reset();
             books.addBook.elem.classList.add('hide');
             books.addBook.elem.style.opacity = '0';
@@ -4824,9 +4825,8 @@ var app = (function(utilFncs, books) {
     utilFncs.toggleMenu.init('.menu-icon', '.navigation');
 
     // get book data, then populate handlebars templates
-    // args: callback, obj from dataset
-    utilFncs.http(books.getBooks, 'book');
-    utilFncs.http(books.getTop10, 'top10');
+    // args: url to data file
+    utilFncs.getJson('data/data.json');
 
     // close events for cards (currently only "welcome back")
     // args: element, event, callback

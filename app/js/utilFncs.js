@@ -74,16 +74,16 @@ var app = (function(utilFncs) {
             lg: 992
         },
 
-        // ajax request
-        // args: callback function
-        http: function(callback, obj) {
+        // ajax request gets data from file and sends it to hamdlebars templates
+        getJson: function(url) {
             var xhr = new XMLHttpRequest();
-            xhr.open('get', encodeURI('data/data.json'));
+            xhr.open('get', encodeURI(url));
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    // alert(xhr.responseText);
                     var data = JSON.parse(xhr.responseText);
-                    callback(data[obj]);
+                    window.bookReviews = data;
+                    books.getBooks(data.book);
+                    books.getTop10(data.top10);
                 }
                 else {
                     alert('Request failed.  Returned status of ' + xhr.status);

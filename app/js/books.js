@@ -69,14 +69,14 @@ var books = (function(utilFncs) {
                 books.addBook.errors.innerHTML = o;
             },
             submitForm: function(fields) {
-                books.addBook.errors.innerHTML = '';
-                // utilFncs.httpPut('books', fields);
+                bookReviews.book.unshift(fields);
+                books.getBooks(bookReviews.book);
                 books.closeBook();
             }
         },
 
         // closes any card with .close class on button but relies on the current dom
-        // solution: jquery parent() or create a similar method
+        // solution: jquery parent('.close') or create a similar method
         closeCard: function(e){
             e.preventDefault();
             var close = e.currentTarget;
@@ -86,6 +86,7 @@ var books = (function(utilFncs) {
 
         // closes add review form
         closeBook: function() {
+            books.addBook.errors.innerHTML = '';
             books.addBook.elem.querySelector('form').reset();
             books.addBook.elem.classList.add('hide');
             books.addBook.elem.style.opacity = '0';

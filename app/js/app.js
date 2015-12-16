@@ -21,9 +21,8 @@ var app = (function(utilFncs, books) {
     utilFncs.toggleMenu.init('.menu-icon', '.navigation');
 
     // get book data, then populate handlebars templates
-    // args: callback, obj from dataset
-    utilFncs.http(books.getBooks, 'book');
-    utilFncs.http(books.getTop10, 'top10');
+    // args: url to data file
+    utilFncs.getJson('data/data.json');
 
     // close events for cards (currently only "welcome back")
     // args: element, event, callback

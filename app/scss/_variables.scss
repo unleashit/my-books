@@ -1,0 +1,24 @@
+//mediaqueries
+$screen-sm: 400px;
+$screen-md: 1040px;
+
+
+// colors
+$header-color: #ec1561;
+$body-color: #ddd;
+$gray: #999;
+$link-emphasized: orange;
+
+//mixins
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+
+  &:after {
+    clear: both;
+  }
+}

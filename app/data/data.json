@@ -1,0 +1,22 @@
+{
+  "book": [
+    {
+      "title": "El Pooch",
+      "author": "Alex Nelson",
+      "image": "images/el-pooch.jpg"
+    },
+    {
+      "title": "The Flight",
+      "author": "Scott Masterson",
+      "image": "images/the-flight.jpg"
+    }
+  ],
+  "top10": [
+    {
+      "number": 10,
+      "title": "Whitehaven Beach",
+      "city": "Whitsunday Island",
+      "state": "Whitsunday Islands"
+    }
+  ]
+}

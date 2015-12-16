@@ -1,35 +1,266 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
-/*
-SCSS variables are information about icon's compiled state, stored under its original file name
+html {
+  font-size: 14px; }
 
-.icon-home {
-  width: $icon-home-width;
-}
-
-The large array-like variables contain all information about a single icon
-$icon-home: x y offset_x offset_y width height total_width total_height image_path;
-
-At the bottom of this section, we provide information about the spritesheet itself
-$spritesheet: width height image $spritesheet-sprites;
-*/
-/*
-The provided mixins are intended to be used with the array-like variables
-
-.icon-home {
-  @include sprite-width($icon-home);
-}
-
-.icon-email {
-  @include sprite($icon-email);
-}
-*/
-/*
-The `sprites` mixin generates identical output to the CSS template
-  but can be overridden inside of SCSS
-
-@include sprites($spritesheet-sprites);
-*/
-/* Global styles */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: orange; }
+  line-height: 1.8em;
+  background: #ddd;
+  color: #333; }
+
+h1 {
+  font-size: 1.8em;
+  line-height: 1.8em;
+  margin-bottom: 0; }
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.2em; }
+
+h3 {
+  font-size: 2em;
+  line-height: 1.6em; }
+
+p, blockquote, ul {
+  margin-bottom: 15px; }
+
+ul {
+  list-style-type: square;
+  margin-left: 40px; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  max-width: 100%; }
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+  height: 25px;
+  border-radius: 2px;
+  background: #eee; }
+
+input[type="submit"], button {
+  background: #ec1561;
+  padding: 12px 28px;
+  border: none;
+  color: #fff;
+  font-size: .8em; }
+
+button {
+  cursor: pointer; }
+
+.container {
+  padding: 0 20px; }
+
+.hide {
+  display: none; }
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after {
+  clear: both; }
+
+.card {
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  margin: 0 0 12px; }
+  .card .inner {
+    padding: 1em 15px 0 15px; }
+  .card p {
+    margin: 0;
+    font-size: 1.3em; }
+  .card footer {
+    padding: 20px 15px;
+    border-top: 1px solid #ddd; }
+    .card footer a {
+      display: inline-block;
+      padding-right: 35px;
+      text-transform: uppercase;
+      font-weight: bold; }
+      .card footer a:last-child {
+        color: orange; }
+
+.title {
+  background-color: #ec1561;
+  color: #fff;
+  padding: 1em 0; }
+
+.title h1 {
+  position: relative;
+  margin-left: 40px; }
+
+.menu-icon {
+  position: absolute;
+  top: 4px;
+  left: -40px;
+  cursor: pointer; }
+
+.navigation {
+  background-color: #fff;
+  color: #fff; }
+  .navigation.is-opened {
+    -webkit-transform-origin: top;
+        -ms-transform-origin: top;
+            transform-origin: top;
+    -webkit-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+            transform: scaleY(1);
+    max-height: 800px;
+    transition: all 200ms ease-in; }
+  .navigation.is-closed {
+    -webkit-transform-origin: top;
+        -ms-transform-origin: top;
+            transform-origin: top;
+    -webkit-transform: scaleY(0);
+        -ms-transform: scaleY(0);
+            transform: scaleY(0);
+    max-height: 0;
+    transition: all 200ms ease-out; }
+
+.mainnav {
+  list-style-type: none;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0; }
+  .mainnav li {
+    border-bottom: 1px solid #ddd; }
+    .mainnav li:last-child {
+      border-bottom: none; }
+  .mainnav a {
+    display: block;
+    font-weight: bold;
+    padding: 1.5em 0; }
+
+.welcome-back h3 {
+  color: #ec1561;
+  margin-bottom: 18px; }
+
+.welcome-back footer {
+  margin-top: 65px; }
+
+.books {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .books .card {
+    position: relative; }
+    .books .card:before, .books .card:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .books .card:after {
+      clear: both; }
+  .books .book-image {
+    width: 35%;
+    margin-right: 20px;
+    float: left;
+    line-height: 0;
+    overflow: hidden; }
+    .books .book-image img {
+      width: 100%;
+      height: auto; }
+  .books .author {
+    font-size: 1.4em;
+    color: #999; }
+  .books footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 35%; }
+
+.top10 {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  .top10 .countdown {
+    color: #999; }
+  .top10 footer {
+    margin-top: 25px; }
+
+.review-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: all, 300ms, ease-in; }
+  .review-form .container {
+    position: relative; }
+  .review-form form {
+    background: #555;
+    color: #eee;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 80px 25px 25px 25px; }
+  .review-form h3 {
+    margin-bottom: 18px; }
+  .review-form p {
+    margin-bottom: 25px; }
+  .review-form .close-add-review {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #eee;
+    font-size: 1.4em;
+    cursor: pointer; }
+
+@media screen and (min-width: 1040px) {
+  html {
+    font-size: 17px; }
+  .container {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1000px; }
+  .navigation.is-closed, .navigation.is-open {
+    visibility: visible;
+    -webkit-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+            transform: scaleY(1);
+    max-height: none; }
+  .menu-icon {
+    display: none; }
+  .title h1 {
+    margin-left: 0; }
+  .mainnav li {
+    border: none;
+    display: inline-block;
+    padding: 1.5em 0;
+    margin-right: 30px; }
+  .mainnav a {
+    display: inline; }
+  .col1 {
+    float: left;
+    width: 49%; }
+  .col2 {
+    float: right;
+    width: 49%; }
+  .books .book-image {
+    width: 173px; }
+  .books footer {
+    margin-left: 173px; } }
+
+@media screen and (max-width: 400px) {
+  .books .book-image {
+    float: none;
+    width: 100%; }
+  .books footer {
+    position: static;
+    margin-top: 25px;
+    margin-left: 0; } }

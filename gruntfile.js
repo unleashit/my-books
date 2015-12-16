@@ -1,11 +1,9 @@
 var bower_path = 'bower_components/',
-    // bootstrap_csspath = bower_path + 'bootstrap-sass-official/assets/stylesheets/',
-    // bootstrap_jspath = bower_path + 'bootstrap-sass-official/assets/javascripts/bootstrap/',
     source_stylesheets = 'app/css/',
     source_javascripts = 'app/js/',
     dest_stylesheets = 'dist/css/',
     dest_javascripts = 'dist/js/',
-    proxyUrl = false; // important: change this to your server's url or 'false' for no proxy!
+    proxyUrl = 'http://localhost/sandbox/bigcommerce/dist/'; // important: change this to your server's url or 'false' for no proxy!
 
 module.exports = function(grunt) {
 
@@ -22,6 +20,16 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'app',
                         src: '*.html', dest: 'dist/'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'app/images',
+                        src: '**/*.*', dest: 'dist/images'
+                    },
+                    {
+                        expand: true,
+                        cwd: 'app/data',
+                        src: '**/*.*', dest: 'dist/data'
                     }
                 ]
             }
@@ -30,7 +38,9 @@ module.exports = function(grunt) {
             dist: {
                 src: [
                     //source_javascripts + '**/*.js',
+                    bower_path + 'handlebars/handlebars.js',
                     source_javascripts + 'utilFncs.js',
+                    source_javascripts + 'books.js',
                     source_javascripts + 'app.js'
 
                 ],
@@ -65,42 +75,42 @@ module.exports = function(grunt) {
                 dest: dest_javascripts + 'global.min.js'
             }
         },
-        responsive_images: {
-            myTask: {
-                options: {
-                    engine: 'im',
-                    sizes: [{
-                        name: 'small',
-                        width: "25%",
-                        quality: 80
-                    },{
-                        name: "medium",
-                        width: "65%",
-                        quality: 65
-                    },{
-                        name: "large",
-                        width: "100%",
-                        quality: 60
-                    }]
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'images/source',
-                    src: ['**/*.{png,jpg,gif}'],
-                    custom_dest: 'images/resized/{%= name %}/'
-                }]
-            }
-        },
+        //responsive_images: {
+        //    myTask: {
+        //        options: {
+        //            engine: 'im',
+        //            sizes: [{
+        //                name: 'small',
+        //                width: "25%",
+        //                quality: 80
+        //            },{
+        //                name: "medium",
+        //                width: "65%",
+        //                quality: 65
+        //            },{
+        //                name: "large",
+        //                width: "100%",
+        //                quality: 60
+        //            }]
+        //        },
+        //        files: [{
+        //            expand: true,
+        //            cwd: 'images/source',
+        //            src: ['**/*.{png,jpg,gif}'],
+        //            custom_dest: 'images/resized/{%= name %}/'
+        //        }]
+        //    }
+        //},
         imagemin: {
-            dynamic: {
+            dev: {
                 options: {
                     optimizationLevel: 4
                 },
                 files: [{
                     expand: true,
-                    cwd: 'images/source',
+                    cwd: 'app/images/source',
                     src: ['**/*.{png,jpg,gif}'],
-                    dest: 'images'
+                    dest: 'app/images'
                 }]
             }
         },
@@ -117,48 +127,49 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'images/svg/source',
+                    cwd: 'app/images/svg/source',
                     src: ['**/*.svg'],
-                    dest: 'images/svg'
+                    dest: 'app/images/svg'
                 }]
             }
         },
-        sprite:{
-            all: {
-                src: 'images/sprites/*.png',
-                dest: 'images/spritesheet.png',
-                destCss: dest_stylesheets + '_sprites.scss',
-                imgPath: 'spritesheet.png',
-                cssVarMap: function (sprite) { sprite.name = 'icon-' + sprite.name;}
-            }
-        },
+        //sprite:{
+        //    all: {
+        //        src: 'images/sprites/*.png',
+        //        dest: 'images/spritesheet.png',
+        //        destCss: dest_stylesheets + '_sprites.scss',
+        //        imgPath: 'spritesheet.png',
+        //        cssVarMap: function (sprite) { sprite.name = 'icon-' + sprite.name;}
+        //    }
+        //},
         watch: {
             options: {
                 spawn: false
             },
             scripts: {
                 files: source_javascripts + '**/*.js',
-                //tasks: ['concat'],
+                tasks: ['concat'],
                 options: {
                     spawn: false
                 }
             },
             css: {
                 files: 'app/scss/**/*.scss',
-                tasks: ['sass']
+                tasks: 'sass'
             }
         },
         browserSync: {
-            dev: {
+            default_options: {
                 bsFiles: {
                     src : [
-                        'app/scss/**/*.scss',
-                        source_javascripts + '**/*.js',
-                        'app/*.html'
+                        '**/*.css',
+                        '**/*.js',
+                       // '**/*.html'
                     ]},
                 options: {
                     proxy: proxyUrl,
-                    port: 63342,
+                    //port: 63342,
+                    //baseDir: 'dist',
                     watchTask: true,
                     injectChanges: true,
                     ghostMode: {
@@ -175,7 +186,7 @@ module.exports = function(grunt) {
    // grunt.loadNpmTasks('grunt-spritesmith');
 
     // grunt.registerTask('firstrun', ['copy', 'sass', 'concat', 'uglify']);
-   // grunt.registerTask('images', ['newer:imagemin', 'newer:svgmin', 'newer:sprite']);
-    grunt.registerTask('build', ['sass', 'autoprefixer', 'newer:concat', 'newer:uglify', 'newer:copy']);
+    grunt.registerTask('images', ['newer:imagemin', 'newer:svgmin']);
+    grunt.registerTask('build', ['newer:copy', 'sass', 'autoprefixer', 'concat', 'newer:uglify']);
     grunt.registerTask('default', ["browserSync", "watch"]);
 };

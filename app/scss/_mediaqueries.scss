@@ -1,0 +1,67 @@
+@media screen and (min-width: $screen-md) {
+  html {
+    font-size: 17px;
+  }
+  .container {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1000px;
+  }
+  .navigation {
+    &.is-closed, &.is-open {
+      visibility: visible;
+      transform: scaleY(1);
+      max-height: none;
+    }
+  }
+  .menu-icon {
+    display: none;
+  }
+  .title h1 {
+    margin-left: 0;
+  }
+  .mainnav {
+    li {
+      border: none;
+      display: inline-block;
+      padding: 1.5em 0;
+      margin-right: 30px;
+    }
+    a {
+      display: inline;
+    }
+  }
+
+  // cols
+  .col1 {
+    float: left;
+    width: 49%;
+  }
+  .col2 {
+    float: right;
+    width: 49%;
+  }
+
+  .books {
+    .book-image {
+      width: 173px;
+    }
+    footer {
+      margin-left: 173px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm) {
+  .books {
+    .book-image {
+      float: none;
+      width: 100%;
+    }
+    footer {
+      position: static;
+      margin-top: 25px;
+      margin-left: 0;
+    }
+  }
+}

@@ -1,8 +1,254 @@
-@include sprites($spritesheet-sprites);
-
-/* Global styles */
-
+// global styles
+html {
+  font-size: 14px;
+}
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: orange;
+  line-height: 1.8em;
+  background: $body-color;
+  color: #333;
+}
+h1, h2, h3, h4, h5 {
+  //margin-bottom: 16px;
+  //font-weight: bold;
+}
+h1 {
+  font-size: 1.8em;
+  line-height: 1.8em;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 1.2em;
+  line-height: 1.2em;
+}
+h3 {
+  font-size: 2em;
+  line-height: 1.6em;
+}
+p, blockquote, ul {
+  margin-bottom: 15px;
+}
+ul {
+  list-style-type: square;
+  margin-left: 40px;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:hover {
+  //text-decoration: underline;
+}
+img {
+  max-width: 100%;
+}
+input[type="text"] {
+  display: block;
+  width: 100%;
+  height: 25px;
+  border-radius: 2px;
+  background: #eee;
+}
+input[type="submit"], button {
+  background: $header-color;
+  padding: 12px 28px;
+  border: none;
+  color: #fff;
+  font-size: .8em;
+}
+button {
+  cursor: pointer;
+}
+
+// helper classes
+.container {
+  padding: 0 20px;
+}
+.hide {
+  display: none;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+.clearfix:after {
+  clear: both;
+}
+
+.card {
+  background: #fff;
+  box-shadow: 0 0 2px rgba(0,0,0,.3);
+  border-radius: 2px;
+  margin: 0 0 12px;
+  .inner {
+    padding: 1em 15px 0 15px;
+  }
+  p {
+    margin: 0;
+    font-size: 1.3em;
+  }
+  footer {
+    padding: 20px 15px;
+    border-top: 1px solid #ddd;
+    a {
+      display: inline-block;
+      padding-right: 35px;
+      text-transform: uppercase;
+      font-weight: bold;
+      &:last-child {
+        color: orange;
+      }
+    }
+  }
+}
+
+// main layout
+.title {
+  background-color: $header-color;
+  color: #fff;
+  padding: 1em 0;
+}
+.title h1 {
+  position: relative;
+  margin-left: 40px;
+}
+.menu-icon {
+  position: absolute;
+  top: 4px;
+  left: -40px;
+  cursor: pointer;
+}
+.navigation {
+  background-color: #fff;
+  color: #fff;
+  &.is-opened {
+    transform-origin: top;
+    transform: scaleY(1);
+    max-height: 800px;
+    transition: all 200ms ease-in;
+  }
+  &.is-closed {
+    transform-origin: top;
+    transform: scaleY(0);
+    max-height: 0;
+    transition: all 200ms ease-out;
+  }
+}
+.mainnav {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 12px;
+    padding: 0;
+  li {
+    border-bottom: 1px solid #ddd;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  a {
+    display: block;
+    font-weight: bold;
+    padding: 1.5em 0;
+  }
+}
+
+// book cards
+
+// welcome back card
+.welcome-back {
+  h3 {
+    color: $header-color;
+    margin-bottom: 18px;
+  }
+  footer {
+    margin-top: 65px;
+  }
+}
+
+//books
+.books {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .card {
+    @include clearfix;
+    position: relative;
+  }
+  .book-image {
+    width: 35%;
+    margin-right: 20px;
+    float: left;
+    line-height: 0;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .card-info {
+  }
+  .author {
+    font-size: 1.4em;
+    color: $gray;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 35%;
+  }
+}
+
+// top10 aussie beaches
+.top10 {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  .countdown {
+    color: $gray;
+  }
+  footer {
+    margin-top: 25px;
+  }
+}
+
+// add review form
+.review-form {
+  position: absolute;
+  top: 0;left:0;right:0;
+  opacity: 0;
+  transition: all, 300ms, ease-in;
+  .container {
+    position: relative;
+  }
+  form {
+    background: #555;
+    color: #eee;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding: 80px 25px 25px 25px;
+  }
+  h3 {
+    margin-bottom: 18px;
+  }
+  p {
+    margin-bottom: 25px;
+  }
+  .close-add-review {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #eee;
+    font-size: 1.4em;
+    cursor: pointer;
+  }
 }

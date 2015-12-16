@@ -4,17 +4,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>My Books - The \u\n official Big Commerce Reader's Club</title>
 	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Assorted responsive mumbo jumbo.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="">
-    <meta name="mobile-web-app-capable" content="yes">
 	<link rel="icon" sizes="196x196" href="">
 	<link rel="apple-touch-icon" sizes="152x152" href="">
 
-<!--     <link rel="stylesheet" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
 
     <!--[if lt IE 9]>
@@ -26,23 +25,121 @@
 
 <body>
 
-<!--[if lt IE 9]><p class="deprecated-browser">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<!--[if lt IE 10]><p class="deprecated-browser box">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container">
-    <div>
-        <div class="">
-            <h1>Title</h1>
-            <h2>Some other text</h2>
+<header>
+    <div class="title">
+        <div class="container">
+            <h1>
+                <span class="menu-icon"><img src="images/icons/ic_menu_24px.svg" alt=""/></span>
+                My books
+            </h1>
         </div>
-    </div> 
+    </div>
+    <div class="navigation">
+        <div class="container">
+            <ul class="mainnav">
+                <li><a href="#">El Pooch</a></li>
+                <li><a href="#">The Flight</a></li>
+                <li><a href="#">Top 10 Austrailian Beaches</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="col1">
+
+        <div class="welcome-back card">
+            <div class="inner">
+                <h3>Welcome Back!</h3>
+                <p>It's been a while.<br>
+                Read any new books lately?</p>
+            </div>
+            <footer>
+                <a href="#" class="no close">No</a><a href="#" class="add-review">Yes</a>
+            </footer>
+        </div>
+
+        <script id="books" type="text/x-handlebars-template">
+            <ul class="books">
+                {{#each this}}
+                <li class="card">
+                    <div class="book-image">
+                        <a href="#"><img src="{{this.image}}" alt="{{this.title}}"/></a>
+                    </div>
+                    <div class="inner">
+                        <h3>{{this.title}}</h3>
+                        <p class="author">By {{this.author}}</p>
+                    </div>
+                    <footer>
+                        <a href="#">Free Sample</a>
+                        <a href="#" class="review">Review</a>
+                    </footer>
+                </li>
+                {{/each}}
+            </ul>
+        </script>
+
+    </div> <!-- /col1-->
+
+    <div class="col2">
+
+    <script id="top10" type="text/x-handlebars-template">
+        <ul class="top10 card">
+            <div class="top10-main-image">
+                <img src="images/top-10-aussie-beaches.jpg" alt=""/>
+            </div>
+            {{#each this}}
+            <li>
+                <div class="inner">
+                    <p class="countdown">Number {{this.number}}</p>
+                    <p>{{this.title}}</p>
+                    <p>{{this.city}}, {{this.state}}</p>
+                </div>
+                <footer>
+                    <a href="#" class="share">Share</a><a href="#" class="explore">Explore</a>
+                </footer>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    </div> <!-- /col2 -->
+
+</div> <!-- /container-->
+
+<div class="review-form hide">
+    <div class="container">
+    <form action="">
+        <h3>Add Your Review</h3>
+        <div class="errors"></div>
+        <p>
+            <label for="booktitle">What is the title?</label>
+            <input type="text" name="booktitle" id="booktitle">
+        </p>
+        <p>
+            <label for="bookauthor">Who is the author?</label>
+            <input type="text" name="bookauthor" id="bookauthor">
+        </p>
+        <p>
+            <label for="bookimage">Enter a path to the book's image</label>
+            <input type="text" name="bookimage" id="bookimage">
+        </p>
+        <div><button type="submit" id="add-review-btn">Add review</button></div>
+    </form>
+        <div class="close-add-review">x</div>
+    </div>
 </div>
 
-<script src="js/global.min.js"></script>
+<script src="js/global.js"></script>
 
 <script type='text/javascript' id="__bs_script__">//<![CDATA[
 document.write("<script async src='http://HOST:63343/browser-sync/browser-sync-client.2.10.0.js'><\/script>".replace("HOST", location.hostname));
 //]]></script>
+
 
 </body>
 </html>
